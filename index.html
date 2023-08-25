@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!--
+        COM ESSE SCRIPT FOI SOLUCIONADO A QUESTÃO DE BISCAR UM ELEMENTO QUE É CRIADO DINÂMICAMENTO NA QUAL
+        SEMPRE FICAVA RETORNANDO O ERRO "NÃO PODE LER PROPRIEDADE NULL", POIS NÃO LOCALIZAVA O ELEMENTO
+        NO MOMENTO QUE CHAMAVA A FUNÇÃO. AGORA FUNCIONOU!
+     -->
+    <div class="newRedirectCategory">
+      <script>
+        function checkElementsAndExecute() {
+          const basicCategory = document.getElementById('1186440');
+          const especialCategory = document.getElementById('1186443');
+
+          if (basicCategory && especialCategory) {
+            basicCategory.addEventListener('click', function () {
+              redirectNewPage('/detalhes-curso?courseId=249718&ysnPacote=0');
+            });
+
+            especialCategory.addEventListener('click', function () {
+              redirectNewPage('/detalhes-curso?courseId=316600&ysnPacote=0');
+            });
+          } else {
+            setTimeout(checkElementsAndExecute, 100);
+          }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+          checkElementsAndExecute();
+        });
+
+        function redirectNewPage(url) {
+          window.location.href = url;
+        }
+      </script>
+    </div>
+  </body>
+</html>
