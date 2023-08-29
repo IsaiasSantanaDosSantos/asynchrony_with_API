@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!--
+        PARA A PÁGINA HOME DO IDCLIENTE: 791426
+
+        FUNCIONOU!
+     -->
+    <div class="newRedirectCategory">
+      <script>
+        function checkElementsAndExecute() {
+          const categoryCardList = [
+            ...document.querySelectorAll('.coursesCategoriesCard'),
+          ];
+          if (categoryCardList.length > 0) {
+            categoryCardList.forEach((e) => {
+              if (e.textContent.includes('Plano Básico')) {
+                let link = e.querySelector('a');
+                link.setAttribute(
+                  'href',
+                  '/detalhes-curso?courseId=249718&ysnPacote=0'
+                );
+                return;
+              }
+              if (e.textContent.includes('Plano Especial')) {
+                let link = e.querySelector('a');
+                link.setAttribute(
+                  'href',
+                  '/detalhes-curso?courseId=316600&ysnPacote=0'
+                );
+                return;
+              }
+            });
+          } else {
+            setTimeout(checkElementsAndExecute, 100);
+          }
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+          checkElementsAndExecute();
+        });
+      </script>
+    </div>
+    <!-- Interceptei o evento -->
+  </body>
+</html>
