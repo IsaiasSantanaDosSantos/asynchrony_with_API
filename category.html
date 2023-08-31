@@ -8,7 +8,6 @@
   <body>
     <!--
         PARA A PÁGINA HOME DO IDCLIENTE: 791426
-
         FUNCIONOU!
      -->
     <div class="newRedirectCategory">
@@ -17,22 +16,43 @@
           const categoryCardList = [
             ...document.querySelectorAll('.coursesCategoriesCard'),
           ];
+          const categoryNameList = [
+            ...document.querySelectorAll('.categoryName'),
+          ];
+          const listLinks = [
+            '/detalhes-curso?courseId=249718&ysnPacote=0', //0
+            '/detalhes-curso?courseId=316600&ysnPacote=0', //1
+          ];
+          // Category name box top
+          if (categoryNameList.length > 0) {
+            categoryNameList.forEach((e) => {
+              if (e.textContent.includes('Plano Básico')) {
+                e.addEventListener('click', function () {
+                  window.location.href = listLinks[0];
+                });
+                return;
+              }
+              if (e.textContent.includes('Plano Especial')) {
+                e.addEventListener('click', function () {
+                  window.location.href = listLinks[1];
+                });
+                return;
+              }
+            });
+          } else {
+            setTimeout(checkElementsAndExecute, 100);
+          }
+          //Category cards
           if (categoryCardList.length > 0) {
             categoryCardList.forEach((e) => {
               if (e.textContent.includes('Plano Básico')) {
                 let link = e.querySelector('a');
-                link.setAttribute(
-                  'href',
-                  '/detalhes-curso?courseId=249718&ysnPacote=0'
-                );
+                link.setAttribute('href', listLinks[0]);
                 return;
               }
               if (e.textContent.includes('Plano Especial')) {
                 let link = e.querySelector('a');
-                link.setAttribute(
-                  'href',
-                  '/detalhes-curso?courseId=316600&ysnPacote=0'
-                );
+                link.setAttribute('href', listLinks[1]);
                 return;
               }
             });
